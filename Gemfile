@@ -15,6 +15,10 @@ gem 'jbuilder', '~> 2.5'
 # Template Renderer
 gem 'slim'
 
+# oauth login
+gem 'devise'
+gem 'omniauth-twitter'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
