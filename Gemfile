@@ -19,6 +19,9 @@ gem 'slim'
 gem 'devise'
 gem 'omniauth-twitter'
 
+# Async background processing
+gem 'sidekiq'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
