@@ -22,6 +22,9 @@ gem 'omniauth-twitter'
 # Async background processing
 gem 'sidekiq'
 
+# Uniquish images
+gem 'cherry_picking_moments', github: 'yensaki/cherry_picking_moments'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
