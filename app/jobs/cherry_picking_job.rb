@@ -7,8 +7,10 @@ class CherryPickingJob < ApplicationJob
     FileUtils.mkdir_p(dest_dir)
     CherryPickingMoments.uniquish!(path, dest_dir)
     
-    Dir.glob(File.join(dest_dir, '*')).each do |image_path|
-      puts image_path
+    Dir.glob(File.join(dest_dir, '*')).each.with_index(1) do |image_path, index|
+      File.open(image_path) do |file|
+        movie.images = { io: file, filename: "#{index}#{File.extname(file)}" }
+      end
     end
   end
 end
