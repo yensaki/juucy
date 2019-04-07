@@ -2,7 +2,11 @@ h1.h1.display-3
   = "Movie: #{@movie.file.filename}"
 
 .container-fluid
-  ul.list-group.list-group-flush
-    - @movie.images.each do |image|
-      li.list-group-item
-        = image_tag url_for(image), width: 120, class: 'img-fluid img-thumbnail'
+  - if @movie.images.present?
+    ul.list-group.list-group-flush
+      - @movie.images.each do |image|
+        li.list-group-item
+          = image_tag url_for(image), width: 120, class: 'img-fluid img-thumbnail'
+  - else
+    .alert.alert-primary role="alert"
+      | Now Cherry Picking ... ...
