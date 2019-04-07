@@ -1,8 +1,7 @@
 h1
-  = "動画 #{@movie.file.filename}"
+  = "Movie: #{@movie.file.filename}"
 
 ul
   - @movie.images.each do |image|
     li
-      = image.filename
       = image_tag url_for(image), width: 120
