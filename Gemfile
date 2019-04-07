@@ -28,6 +28,12 @@ gem 'cherry_picking_moments', github: 'yensaki/cherry_picking_moments'
 # Storage backet
 gem 'aws-sdk-s3'
 
+# design template
+# gem 'bootstrap-sass'
+gem 'jquery-rails'
+gem 'bootstrap'
+gem 'bootstrap-sass'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

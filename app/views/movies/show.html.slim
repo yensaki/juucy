@@ -1,7 +1,8 @@
-h1
+h1.h1.display-3
   = "Movie: #{@movie.file.filename}"
 
-ul
-  - @movie.images.each do |image|
-    li
-      = image_tag url_for(image), width: 120
+.container-fluid
+  ul.list-group.list-group-flush
+    - @movie.images.each do |image|
+      li.list-group-item
+        = image_tag url_for(image), width: 120, class: 'img-fluid img-thumbnail'

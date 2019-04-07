@@ -1,7 +1,11 @@
-h1
+h1.display-2
   | Juucy
 
-div
+.container-fluid
+  p
+    | キャプチャが欲しい動画をアップロードしてください
   = form_with model: Movie.new, local: true do |form|
-    = form.file_field :file
-    = form.submit
+    p
+      = form.file_field :file
+    p
+      = form.submit 'アップロード', class: 'btn btn-primary'
