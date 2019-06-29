@@ -6,6 +6,7 @@
       - @movie.images.each do |image|
         li.list-group-item
           = image_tag url_for(image.file), width: 120, class: 'img-fluid img-thumbnail'
+          = image.following_distance
   - else
     .alert.alert-primary role="alert"
       | Now Cherry Picking ... ...
