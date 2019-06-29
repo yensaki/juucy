@@ -7,10 +7,10 @@ class CherryPickingJob < ApplicationJob
     file = open(movie.file.blob.service_url)
     dest_dir = Rails.root.join('tmp', movie.uuid)
     FileUtils.mkdir_p(dest_dir)
-    CherryPickingMoments.uniquish!(file.path, dest_dir)
-    
-    Dir.glob(File.join(dest_dir, '*')).each.with_index(1) do |image_path, index|
-      File.open(image_path) do |file|
+    picking_movie = CherryPickingMoments.movie(file.path)
+
+    picking_movie.images.each.with_index(1) do |image, index|
+      File.open(image.filepath).each do |file|
         movie.images = { io: file, filename: "#{index}#{File.extname(file)}" }
       end
     end

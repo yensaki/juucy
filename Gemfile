@@ -23,7 +23,7 @@ gem 'omniauth-twitter'
 gem 'sidekiq'
 
 # Uniquish images
-gem 'cherry_picking_moments', github: 'yensaki/cherry_picking_moments'
+gem 'cherry_picking_moments', '>= 0.2.0'
 
 # Storage backet
 gem 'aws-sdk-s3'
