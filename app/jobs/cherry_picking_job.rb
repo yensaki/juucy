@@ -11,7 +11,8 @@ class CherryPickingJob < ApplicationJob
 
     picking_movie.images.each.with_index(1) do |image, index|
       File.open(image.filepath).each do |file|
-        movie.images = { io: file, filename: "#{index}#{File.extname(file)}" }
+        filename = "#{index}#{File.extname(file)}"
+        movie.images.create!(following_distance: image.following_distance, file: { io: file, filename: filename })
       end
     end
   end

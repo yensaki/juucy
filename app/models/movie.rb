@@ -1,6 +1,7 @@
 class Movie < ApplicationRecord
   has_one_attached :file
-  has_many_attached :images
+
+  has_many :images
 
   before_save :generate_uuid
 
