@@ -28,6 +28,9 @@ gem 'cherry_picking_moments', '>= 0.2.0'
 # split audio
 gem 'duoduo', github: 'yensaki/duoduo'
 
+# Google Cloud Speech-to-Text
+gem 'google-cloud-speech'
+
 # Storage backet
 gem 'aws-sdk-s3'
 
