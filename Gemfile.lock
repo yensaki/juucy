@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/yensaki/duoduo.git
+  revision: 1109d7347184349bff14d4f80a45bed5119384c1
+  specs:
+    duoduo (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -238,6 +244,7 @@ DEPENDENCIES
   bootstrap-sass
   cherry_picking_moments (>= 0.2.0)
   devise
+  duoduo!
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
