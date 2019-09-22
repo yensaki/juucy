@@ -1,12 +1,19 @@
 .container-fluid
   h1.h1.display-3
     = "Movie: #{@movie.file.filename}"
+
+  h3.h3.display-6
+    | キャプチャ
   - if @movie.images.present?
-    ul.list-group.list-group-flush
-      - @movie.images.each do |image|
-        li.list-group-item
-          = image_tag url_for(image.file), width: 120, class: 'img-fluid img-thumbnail'
-          = image.following_distance
+    = link_to "一覧", movie_images_path(@movie)
   - else
     .alert.alert-primary role="alert"
       | Now Cherry Picking ... ...
+
+  h3.h3.display-6
+    | テキスト
+  - if @movie.audios.present?
+    = link_to "一覧", movie_audios_path(@movie)
+  - else
+    .alert.alert-primary role="alert"
+      | Now audio texting ... ...
