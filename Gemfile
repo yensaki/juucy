@@ -31,6 +31,9 @@ gem 'duoduo', github: 'yensaki/duoduo'
 # Google Cloud Speech-to-Text
 gem 'google-cloud-speech'
 
+# Paginate
+gem 'kaminari'
+
 # Storage backet
 gem 'aws-sdk-s3'
 
