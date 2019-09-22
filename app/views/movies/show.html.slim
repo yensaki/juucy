@@ -5,7 +5,7 @@
   h3.h3.display-6
     | キャプチャ
   - if @movie.images.present?
-    = link_to "一覧", movie_images_path(@movie)
+    = link_to "一覧", movie_images_path(@movie.uuid)
   - else
     .alert.alert-primary role="alert"
       | Now Cherry Picking ... ...
@@ -13,7 +13,7 @@
   h3.h3.display-6
     | テキスト
   - if @movie.audios.present?
-    = link_to "一覧", movie_audios_path(@movie)
+    = link_to "一覧", movie_audios_path(@movie.uuid)
   - else
     .alert.alert-primary role="alert"
       | Now audio texting ... ...
