@@ -21,12 +21,11 @@ amazon:
   region: ap-northeast-1
   bucket: juucy
 
-# Remember not to checkin your GCS keyfile to a repository
-# google:
-#   service: GCS
-#   project: your_project
-#   credentials: <%= Rails.root.join("path/to/gcs.keyfile") %>
-#   bucket: your_own_bucket
+google_dev:
+  service: GCS
+  project: saki-185412
+  credentials: <%= Rails.root.join("saki-185412-435bd9785934.json") %>
+  bucket: yensaki_juucy_dev
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
