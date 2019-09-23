@@ -36,6 +36,7 @@ gem 'kaminari'
 
 # Storage backet
 gem 'aws-sdk-s3'
+gem "google-cloud-storage", "~> 1.8", require: false
 
 # design template
 # gem 'bootstrap-sass'
