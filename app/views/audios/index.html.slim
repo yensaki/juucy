@@ -1,0 +1,11 @@
+.container-fluid
+  h1.h1.display-3
+    = "Movie: #{@movie.file.filename}"
+  - if @movie.audios.present?
+    ul.list-group.list-group-flush
+      - @movie.audios.each do |audio|
+        li.list-group-item
+          = audio.words
+  - else
+    .alert.alert-primary role="alert"
+      | Yet audio texting ... ...
