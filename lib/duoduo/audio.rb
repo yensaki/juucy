@@ -1,6 +1,5 @@
 require 'open3'
 require 'tmpdir'
-require 'duoduo/piece'
 require 'securerandom'
 require 'fileutils'
 
@@ -24,7 +23,7 @@ class Duoduo::Audio
 
   # private
   def split!
-    Open3.capture3("sox #{@filepath} #{File.join(sliced_dir, basename)} silence -l 0 1 0.3 1% : newfile : restart")
+    Open3.capture3("sox #{@filepath} #{File.join(sliced_dir, basename)} silence -l 0 1 0.3 5% : newfile : restart")
   end
 
   def basename
