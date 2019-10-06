@@ -33,6 +33,7 @@ module Juucy
     # ActiveJob adapter
     config.active_job.queue_adapter = :sidekiq
 
+    config.paths.add 'lib', eager_load: true
     ENV["GOOGLE_APPLICATION_CREDENTIALS"] =  Rails.root.join("./saki-185412-1b5c53d43eb9.json").to_s
   end
 end

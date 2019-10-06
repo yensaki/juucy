@@ -5,7 +5,8 @@
     ul.list-group.list-group-flush
       - @movie.audios.each do |audio|
         li.list-group-item
-          = audio.words
+          audio src="#{url_for(audio.file)}" controls=""
+          = audio.words.presence || "(テキストなし)"
   - else
     .alert.alert-primary role="alert"
       | Yet audio texting ... ...
