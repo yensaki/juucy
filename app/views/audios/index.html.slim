@@ -7,6 +7,7 @@
         li.list-group-item
           audio src="#{url_for(audio.file)}" controls=""
           = audio.words.presence || "(テキストなし)"
+          = link_to "編集", edit_movie_audio_path(@movie.uuid, audio.id)
   - else
     .alert.alert-primary role="alert"
       | Yet audio texting ... ...
