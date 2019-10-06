@@ -5,9 +5,17 @@
     ul.list-group.list-group-flush
       - @movie.audios.each do |audio|
         li.list-group-item
-          audio src="#{url_for(audio.file)}" controls=""
-          = audio.words.presence || "(テキストなし)"
-          = link_to "編集", edit_movie_audio_path(@movie.uuid, audio.id)
+          .row
+            .col-sm-3
+              audio src="#{url_for(audio.file)}" controls=""
+            .col-sm-2
+              p
+                = audio.start_time
+              p
+                = audio.end_time
+            .col-sm-7
+              = audio.words.presence || "none"
+              = link_to "編集", edit_movie_audio_path(@movie.uuid, audio.id)
   - else
     .alert.alert-primary role="alert"
       | Yet audio texting ... ...
