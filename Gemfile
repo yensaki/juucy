@@ -27,6 +27,8 @@ gem 'cherry_picking_moments', '>= 0.2.0'
 
 gem 'google-cloud-speech'
 
+gem 'wavefile'
+
 # Paginate
 gem 'kaminari'
 
