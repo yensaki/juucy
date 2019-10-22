@@ -25,16 +25,14 @@ gem 'sidekiq'
 # Uniquish images
 gem 'cherry_picking_moments', '>= 0.2.0'
 
-# split audio
-gem 'duoduo', github: 'yensaki/duoduo'
-
-# Google Cloud Speech-to-Text
 gem 'google-cloud-speech'
+
+gem 'wavefile'
 
 # Paginate
 gem 'kaminari'
 
-# Storage backet
+# Storage backetf
 gem 'aws-sdk-s3'
 gem "google-cloud-storage", "~> 1.8", require: false
 

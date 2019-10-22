@@ -2,10 +2,28 @@
   h1.h1.display-3
     = "Movie: #{@movie.file.filename}"
   - if @movie.audios.present?
+    p
+      - (0..32).to_a.each do |th|
+        = link_to th, movie_audios_path(@movie.uuid, threshold: th), class: 'btn'
     ul.list-group.list-group-flush
       - @movie.audios.each do |audio|
         li.list-group-item
-          = audio.words
+          .row
+            .col-sm-3
+              audio src="#{url_for(audio.file)}" controls=""
+            .col-sm-1
+              p
+                = audio.start_time
+              p
+                = audio.end_time
+            .col-sm-3
+              = audio.words.presence || "-"
+              = link_to "編集", edit_movie_audio_path(@movie.uuid, audio.id)
+            .col-sm-5
+              - audio.related_images(threshold: @threshold).each do |image|
+                = link_to url_for(image.file) do
+                  = image_tag url_for(image.file), width: 60, class: 'img-fluid img-thumbnail'
+
   - else
     .alert.alert-primary role="alert"
       | Yet audio texting ... ...
