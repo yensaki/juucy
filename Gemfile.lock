@@ -1,9 +1,3 @@
-GIT
-  remote: https://github.com/yensaki/duoduo.git
-  revision: 37c10cacb88c6003f93b96a9209cd8fbeb0848c4
-  specs:
-    duoduo (0.1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -303,6 +297,7 @@ GEM
     uber (0.1.0)
     warden (1.2.8)
       rack (>= 2.0.6)
+    wavefile (1.1.0)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -322,7 +317,6 @@ DEPENDENCIES
   bootstrap-sass
   cherry_picking_moments (>= 0.2.0)
   devise
-  duoduo!
   google-cloud-speech
   google-cloud-storage (~> 1.8)
   jbuilder (~> 2.5)
@@ -339,6 +333,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
+  wavefile
   web-console (>= 3.3.0)
 
 RUBY VERSION

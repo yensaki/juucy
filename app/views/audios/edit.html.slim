@@ -1,0 +1,13 @@
+.container-fluid
+  h1.h1.display-3
+    = "Edit Audio: #{@audio.id}"
+
+  = form_with model: @audio, url: movie_audio_path(@movie.uuid, @audio.id), method: :patch, local: true do |f|
+    = f.hidden_field :id
+
+    .form-group
+      label for='words'
+        | テキスト
+      = f.text_field :words, id: "words"
+
+    = f.submit "更新", class: "btn btn-primary"
