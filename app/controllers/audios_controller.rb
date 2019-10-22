@@ -3,6 +3,7 @@ class AudiosController < ApplicationController
   before_action :set_audio, only: %i(edit update)
 
   def index
+    @threshold = params[:threshold].to_i
   end
 
   def edit
