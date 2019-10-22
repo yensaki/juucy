@@ -13,8 +13,9 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
+  host: <%= ENV['JUUCY_DATABASE_HOST'] || '' %>
+  username: <%= ENV['JUUCY_DATABASE_USER'] || 'root' %>
+  password: <%= ENV['JUUCY_DATABASE_PASSWORD'] || 'password' %>
   socket: /tmp/mysql.sock
 
 development:

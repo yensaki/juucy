@@ -1,0 +1,27 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ./tmp/mysql/data:/var/lib/mysql
+    environment:
+      MYSQL_PASSWORD: password
+      MYSQL_USER: root
+  app:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+#    command: "bundle exec puma -C config/puma.rb"
+    command: "bundle exec rails server"
+    environment:
+      JUUCY_DATABASE_USER: "root"
+      JUUCY_DATABASE_PASSWORD: "password"
+      JUUCY_DATABASE_HOST: mysql
+    volumes:
+      - .:/app:cached
+    depends_on:
+      - mysql
+volumes:
+  tmp:
+    driver: local
