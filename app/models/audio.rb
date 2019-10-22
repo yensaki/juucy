@@ -21,4 +21,10 @@ class Audio < ApplicationRecord
     raise operation.results.message if operation.error?
     operation.response.results.first&.alternatives&.compact&.map(&:transcript)&.join(' ')
   end
+
+  def related_images(threshold:)
+    start_count = (start_time * 10).to_i
+    end_count = (end_time * 10).to_i
+    movie.images[start_count..end_count].select{|image| image.following_distance > threshold}
+  end
 end
