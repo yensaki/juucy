@@ -22,14 +22,16 @@ ADD Gemfile.lock $APP_HOME/Gemfile.lock
 RUN bundle install --jobs=4 --retry=5
 
 #COPY . $APP_HOME
-COPY app $APP_HOME
-COPY bin $APP_HOME
-COPY config $APP_HOME
-COPY db $APP_HOME
-COPY lib $APP_HOME
-COPY public $APP_HOME
-COPY package.json $APP_HOME
+COPY app $APP_HOME/app
+COPY bin $APP_HOME/bin
+COPY config $APP_HOME/config
+COPY db $APP_HOME/db
+COPY lib $APP_HOME/lib
+COPY public $APP_HOME/public
+COPY package.json $APP_HOME/package.json
+COPY Rakefile $APP_HOME/Rakefile
+COPY config.ru $APP_HOME/config.ru
 
 EXPOSE 3000
 
-CMD bundle exec rails s
+CMD "bundle exec rails server -p 3000"
