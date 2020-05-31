@@ -48,6 +48,12 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+staging:
+  <<: *default
+  database: juucy_staging
+  username: juucy
+  password: <%= ENV['JUUCY_DATABASE_PASSWORD'] %>
+
 production:
   <<: *default
   database: juucy_production
