@@ -18,6 +18,8 @@ RUN bundle install --jobs=4 --retry=5
 
 COPY . $APP_HOME
 
+RUN bundle exec rails assets:precompile
+
 EXPOSE $PORT
 
 CMD "bundle exec rails server -p #{$PORT}"
