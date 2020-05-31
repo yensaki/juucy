@@ -22,4 +22,4 @@ RUN bundle exec rails assets:precompile
 
 EXPOSE $PORT
 
-CMD "bundle exec rails server -p #{$PORT}"
+CMD ["bin/entrypoint.sh"]
