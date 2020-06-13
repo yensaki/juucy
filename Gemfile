@@ -16,8 +16,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'slim'
 
 # oauth login
-gem 'devise'
-gem 'omniauth-twitter'
+# gem 'devise'
+# gem 'omniauth-twitter'
 
 # Async background processing
 gem 'sidekiq'
