@@ -15,4 +15,3 @@ steps:
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
-      - '--set-env-vars RAILS_ENV=development'
