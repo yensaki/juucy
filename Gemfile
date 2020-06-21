@@ -38,9 +38,9 @@ gem "google-cloud-storage", "~> 1.8", require: false
 
 # design template
 # gem 'bootstrap-sass'
-gem 'jquery-rails'
-gem 'bootstrap'
-gem 'bootstrap-sass'
+# gem 'jquery-rails'
+# gem 'bootstrap'
+# gem 'bootstrap-sass'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
