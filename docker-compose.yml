@@ -20,6 +20,7 @@ services:
       JUUCY_DATABASE_USER: "root"
       JUUCY_DATABASE_PASSWORD: "password"
       JUUCY_DATABASE_HOST: mysql
+      PORT: 3000
     depends_on:
       - mysql
 volumes:
