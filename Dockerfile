@@ -19,8 +19,6 @@ RUN yarn global add node-gyp
 
 ADD . /app
 
-ENTRYPOINT ["bin/entrypoint.sh"]
-
 EXPOSE 3000
 
 CMD ["./bin/entrypoint.sh"]
