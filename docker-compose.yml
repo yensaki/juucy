@@ -23,6 +23,19 @@ services:
       PORT: 3000
     depends_on:
       - mysql
+  sidekiq:
+    build: .
+    command: "bundle exec sidekiq -C config/sidekiq.yml"
+    volumes:
+      - .:/app
+      - "bundle:/app/vendor/bundle"
+      - "log:/app/log"
+    environment:
+      JUUCY_DATABASE_USER: "root"
+      JUUCY_DATABASE_PASSWORD: "password"
+      JUUCY_DATABASE_HOST: mysql
+    depends_on:
+      - mysql
 volumes:
   bundle:
     driver: local
