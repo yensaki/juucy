@@ -26,7 +26,7 @@ services:
       - mysql
   sidekiq:
     build: .
-    command: "bundle exec sidekiq -C config/sidekiq.yml"
+    command: "bundle exec sidekiq"
     volumes:
       - .:/app
       - "bundle:/app/vendor/bundle"
@@ -35,6 +35,7 @@ services:
       JUUCY_DATABASE_USER: "root"
       JUUCY_DATABASE_PASSWORD: "password"
       JUUCY_DATABASE_HOST: mysql
+      REDIS_HOST: "redis"
     depends_on:
       - mysql
   redis:
