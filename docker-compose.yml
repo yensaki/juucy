@@ -20,6 +20,7 @@ services:
       JUUCY_DATABASE_USER: "root"
       JUUCY_DATABASE_PASSWORD: "password"
       JUUCY_DATABASE_HOST: mysql
+      REDIS_HOST: "redis"
       PORT: 3000
     depends_on:
       - mysql
@@ -36,6 +37,10 @@ services:
       JUUCY_DATABASE_HOST: mysql
     depends_on:
       - mysql
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
 volumes:
   bundle:
     driver: local
