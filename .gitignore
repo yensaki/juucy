@@ -23,5 +23,7 @@
 /public/assets
 .byebug_history
 
+/.google-service-account.json
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
