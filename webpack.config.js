@@ -1,70 +1,107 @@
-const path = require('path');
-const glob = require('glob');
-const webpack = require('webpack');
-const ManifestPlugin = require('webpack-manifest-plugin')
+const path = require('path')
+const glob = require('glob')
+const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-let entries = {};
-glob.sync('./frontend/**/*.{js,jsx,ts,tsx,css,scss,sass}').map((file) => {
-    let name = file.split('/')[3].split('.')[0];
-    entries[name] = file;
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const ManifestPlugin = require('webpack-manifest-plugin')
+
+let entries = {}
+glob.sync('./frontend/pages/**/*.js').map(function(file) {
+    let name = file.split('/')[4].split('.')[0]
+    entries[name] = file
 })
-module.exports = {
-    entry: entries,
-    output: {
-        filename: "[name]-[hash].js",
-        path: path.join(__dirname, 'public', 'assets'),
-        publicPath: "/"
-    },
-    module: {
-        rules: [
-            {
-                test: /\.(ts|tsx)$/,
-                loader: 'ts-loader',
-            },
-            {
-                test: /\.css$/,
-                use:['style-loader', 'css-loader']
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    { loader: process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader},
-                    { loader: 'css-loader',},
-                    { loader: 'postcss-loader',
-                        options: {
-                            plugins: function () {
-                                return [
-                                    require('precss'),
-                                    require('autoprefixer')
-                                ];
-                            }
-                        }
-                    },
-                    { loader: 'sass-loader'}
-                ]
-            },
-            {
-                test: /.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-                use: "url-loader?limit=100000"
-            },
+
+module.exports = (env, argv) => {
+    const IS_DEV = argv.mode === 'development'
+
+    return {
+        entry: entries,
+        // devtool: IS_DEV ? 'source-map' : 'none',
+        output: {
+            filename: 'javascripts/[name]-[hash].js',
+            path: path.resolve(__dirname, 'public/assets')
+        },
+        plugins: [
+            new VueLoaderPlugin(),
+            new MiniCssExtractPlugin({
+                filename: 'stylesheets/[name]-[hash].css'
+            }),
+            new webpack.HotModuleReplacementPlugin(),
+            new ManifestPlugin({
+                writeToFileEmit: true
+            })
         ],
-    },
-    resolve: {
-        modules:[path.join(__dirname, 'node_modules')],
-        extensions: ['.js', '.jsx', '.ts', '.tsx']
-    },
-    plugins: [
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: 'jquery',
-            jquery: 'jquery',
-            "window.jQuery": 'jquery',
-        }),
-        new ManifestPlugin({
-            writeToFileEmit: true
-        }),
-        new MiniCssExtractPlugin({
-            filename: '[name].css'
-        }),
-    ],
-};
+        module: {
+            rules: [
+                {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            [
+                                '@babel/preset-env',
+                                {
+                                    targets: {
+                                        ie: 11
+                                    },
+                                    useBuiltIns: 'usage'
+                                }
+                            ]
+                        ]
+                    }
+                },
+                {
+                    test: /\.vue$/,
+                    loader: 'vue-loader'
+                },
+                {
+                    test: /\.pug/,
+                    loader: 'pug-plain-loader'
+                },
+                {
+                    test: /\.(c|sc)ss$/,
+                    use: [
+                        {
+                            loader: MiniCssExtractPlugin.loader,
+                            options: {
+                                publicPath: path.resolve(__dirname, 'public/assets/stylesheets')
+                            }
+                        },
+                        'css-loader',
+                        'sass-loader'
+                    ]
+                },
+                {
+                    test: /\.(jpg|png|gif)$/,
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name]-[hash].[ext]',
+                        outputPath: 'images',
+                        publicPath: function(path) {
+                            return 'images/' + path
+                        }
+                    }
+                }
+            ]
+        },
+        resolve: {
+            alias: {
+                vue: 'vue/dist/vue.js'
+            },
+            extensions: ['.js', '.scss', 'css', '.vue', '.jpg', '.png', '.gif', ' ']
+        },
+        optimization: {
+            splitChunks: {
+                cacheGroups: {
+                    vendor: {
+                        test: /.(c|sa)ss/,
+                        name: 'style',
+                        chunks: 'all',
+                        enforce: true
+                    }
+                }
+            }
+        }
+    }
+}
