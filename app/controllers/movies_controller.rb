@@ -4,9 +4,9 @@ class MoviesController < ApplicationController
   end
 
   def create
-    # TODO: to be Form
-    movie = Movie.create!(params.require(:movie).permit(:file))
-    CherryPickingJob.perform_later(movie)
-    redirect_to movie_url(movie.uuid)
+    form = MovieForm.new(file: params.require(:movie)[:file])
+    form.save!
+
+    redirect_to movie_url(form.movie.uuid)
   end
 end

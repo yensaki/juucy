@@ -24,7 +24,7 @@ amazon:
 google_dev:
   service: GCS
   project: saki-185412
-  credentials: <%= Rails.root.join("saki-185412-435bd9785934.json") %>
+  credentials: <%= Rails.root.join("google-service-account.json") %>
   bucket: yensaki_juucy_dev
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
