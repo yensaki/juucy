@@ -1,9 +1,9 @@
 module WebpackBundleHelper
   class BundleNotFound < StandardError; end
 
-  def asset_bundle_path(entry, **options)
+  def asset_bundle_path(entry)
     raise BundleNotFound, "Could not find bundle with name #{entry}" unless manifest.key?(entry)
-    asset_path(manifest.fetch(entry), **options)
+    File.join('assets', manifest.fetch(entry))
   end
 
   def javascript_bundle_tag(entry, **options)
