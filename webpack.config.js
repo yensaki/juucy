@@ -6,8 +6,9 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 
 let entries = {}
-glob.sync('./frontend/pages/**/*.js').map(function(file) {
-    let name = file.split('/')[4].split('.')[0]
+glob.sync('./frontend/entrypoints/**/*.{js,jsx,ts,tsx,css,scss,sass}').map(function(file) {
+    let extname = path.extname(file)
+    let name = path.basename(file, extname)
     entries[name] = file
 })
 
