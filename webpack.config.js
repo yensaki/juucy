@@ -66,7 +66,7 @@ module.exports = (env, argv) => {
                         {
                             loader: MiniCssExtractPlugin.loader,
                             options: {
-                                publicPath: path.resolve(__dirname, 'public/assets/stylesheets')
+                                publicPath: path.resolve(__dirname, 'public/assets/')
                             }
                         },
                         'css-loader',
