@@ -6,16 +6,21 @@ RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs ya
 RUN mkdir /app
 WORKDIR /app
 RUN gem install bundler
-ADD Gemfile /app/Gemfile
-ADD Gemfile.lock /app/Gemfile.lock
-RUN bundle install
 
 COPY --from=node /opt/yarn /opt/yarn
 COPY --from=node /usr/local/bin/node /usr/local/bin/
 RUN ln -s /opt/yarn/bin/yarn /usr/local/bin/yarn \
     && ln -s /opt/yarn/bin/yarnpkg /usr/local/bin/yarnpkg
 
-RUN yarn global add node-gyp
+ADD Gemfile /app
+ADD Gemfile.lock /app
+RUN bundle install
+
+ADD package.json yarn.lock webpack.config.js /app/
+RUN yarn install
+ADD frontend /app/frontend
+ADD public /app/public
+RUN yarn run webpack
 
 ADD . /app
 
